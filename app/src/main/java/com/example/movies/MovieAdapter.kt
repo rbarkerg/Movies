@@ -11,6 +11,7 @@ import kotlinx.android.synthetic.main.activity_movie_cell.view.*
 
 class MovieAdapter(var items : List<MMovie>, val adapterContext: Context) : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
 
+    var onItemClick: ((MMovie) -> Unit)? = null
     // Gets the number of animals in the list
     override fun getItemCount(): Int {
         return items.size
@@ -30,6 +31,12 @@ class MovieAdapter(var items : List<MMovie>, val adapterContext: Context) : Recy
         fun showItem(movie: MMovie, itemView: View = view) {
             Glide.with(adapterContext).load(movie.thumbnail).centerCrop().into(itemView.thumbnail)
             itemView.movieName.text = movie.name
+        }
+
+        init {
+            view!!.setOnClickListener {
+                onItemClick?.invoke(items[adapterPosition])
+            }
         }
 //        val tvAnimalType = view.tv_animal_type
     }
