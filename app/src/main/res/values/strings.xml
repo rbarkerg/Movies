@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Movies</string>
+    <string name="header_name">Pelis cools</string>
+    <string name="default_text">este texto veine de api</string>
 </resources>
